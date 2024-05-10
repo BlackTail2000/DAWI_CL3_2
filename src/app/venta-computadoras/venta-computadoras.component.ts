@@ -1,17 +1,22 @@
+import { CurrencyPipe, DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-venta-computadoras',
   standalone: true,
-  imports: [],
+  imports: [
+    FormsModule,
+    DatePipe,
+    CurrencyPipe
+  ],
   templateUrl: './venta-computadoras.component.html',
   styleUrl: './venta-computadoras.component.scss'
 })
 export class VentaComputadorasComponent {
   ventas: Venta[] = []
 
-  venta: Venta = {
-    fecha: new Date(),
+  venta = {
     cliente: "",
     nrocompus: 0,
     neto: 0,
@@ -24,8 +29,14 @@ export class VentaComputadorasComponent {
     this.venta.neto = Number(this.venta.nrocompus) * 4000;
     this.venta.porcentajedesc = this.calcularDescuento(Number(this.venta.nrocompus));
     this.venta.total = Number(this.venta.neto) - Number(this.venta.neto * this.venta.porcentajedesc / 100);
-    this.venta.fecha = new Date();
-    this.ventas.push(this.venta);
+    this.ventas.push({
+      fecha: new Date(),
+      cliente: this.venta.cliente,
+      nrocompus: this.venta.nrocompus,
+      neto: this.venta.neto,
+      porcentajedesc: this.venta.porcentajedesc,
+      total: this.venta.total
+    });
     this.mostrarResultado = true;
   }
 
