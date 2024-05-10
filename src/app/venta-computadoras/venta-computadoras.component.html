@@ -24,36 +24,55 @@
                 <div class="col">
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="txtcliente"
-                               autocomplete="off" placeholder="Cliente">
+                               autocomplete="off" placeholder="Cliente"
+                               [(ngModel)]="venta.cliente">
                         <label for="txtcliente">Cliente</label>
                     </div>
                     <div class="form-floating mb-3">
                         <input type="number" class="form-control" id="txtnrocompus"
-                               autocomplete="off" placeholder="Nro. Computadoras">
+                               autocomplete="off" placeholder="Nro. Computadoras"
+                               [(ngModel)]="venta.nrocompus">
                         <label for="txtnrocompus">Nro. Computadoras</label>
                     </div>
                     <div class="text-center">
-                        <button type="button" class="btn btn-success">
+                        <button type="button" class="btn btn-success"
+                                (click)="calcularVenta()">
                             Procesar Venta
                         </button>
                     </div>
-                    <div class="alert alert-success text-center mt-5" role="alert">
-                        Venta Completada
-                    </div>
+                    @if(mostrarResultado) {
+                        <div class="alert alert-success text-center mt-5" role="alert">
+                            Venta Completada
+                        </div>
+                    }
                 </div>
             </div>
-            <table class="table table-bordered table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">Fecha de Venta</th>
-                        <th scope="col">Cliente</th>
-                        <th scope="col">Nro. Computadoras</th>
-                        <th scope="col">Precio Neto</th>
-                        <th scope="col">Descuento</th>
-                        <th scope="col">Precio Total</th>
-                    </tr>
-                </thead>
-            </table>
+            @if(mostrarResultado) {
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Fecha de Venta</th>
+                            <th scope="col">Cliente</th>
+                            <th scope="col">Nro. Computadoras</th>
+                            <th scope="col">Precio Neto</th>
+                            <th scope="col">Descuento</th>
+                            <th scope="col">Precio Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (venta of ventas; track $index) {
+                            <tr>
+                                <td>{{venta.fecha | date: 'short'}}</td>
+                                <td>{{venta.cliente}}</td>
+                                <td>{{venta.nrocompus}}</td>
+                                <td>{{venta.neto | currency: "S/."}}</td>
+                                <td>{{venta.porcentajedesc}}%</td>
+                                <td>{{venta.total | currency: "S/."}}</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
         </div>
     </div>
 </div>
