@@ -26,7 +26,7 @@ export class TiposTriangulosComponent {
 mostrarResultado: boolean = false;
 
 calcularLongitud(): void {
-  if (this.triangulo.longitud1 < 0 || this.triangulo.longitud2 < 0 || this.triangulo.longitud3 < 0) {
+  if (this.triangulo.longitud1 <= 0 || this.triangulo.longitud2 <= 0 || this.triangulo.longitud3 <= 0) {
     alert("No se pueden ingresar longitudes negativas."); // Mensaje para el usuario
         return; 
 } else {
