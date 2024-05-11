@@ -13,4 +13,15 @@ export class EstadosAguaComponent {
     resultado: ""
   }
   mostrarResultado = false;
+
+  calcularEstado(){
+    if(this.estadoAgua.temperatura<0)
+      this.estadoAgua.resultado = "Sólido";
+    else if(this.estadoAgua.temperatura <100)
+      this.estadoAgua.resultado = "Liquido";
+    else
+    this.estadoAgua.resultado = "Gaseoso";
+  this.mostrarResultado = true;
+  }
 }
+
