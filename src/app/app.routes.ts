@@ -3,6 +3,7 @@ import { VentaComputadorasComponent } from './venta-computadoras/venta-computado
 import { TiposTriangulosComponent } from './tipos-triangulos/tipos-triangulos.component';
 
 export const routes: Routes = [
+    {path: "estados-agua", component: EstadosAguaComponent},
     {path: "venta-computadoras", component: VentaComputadorasComponent},
-    {path: "tipos-triangulos", component: TiposTriangulosComponent}
+    {path: "tipos-triangulos", component: TiposTriangulosComponent},
 ];
