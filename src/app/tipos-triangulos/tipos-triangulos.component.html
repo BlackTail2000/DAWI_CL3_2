@@ -25,29 +25,58 @@
                 <div class="col">
                     <div class="form-floating mb-3">
                         <input type="number" class="form-control" id="txtlong1"
-                               autocomplete="off" placeholder="Longitud 1">
+                               autocomplete="off" placeholder="Longitud 1"
+                               [(ngModel)]="triangulo.longitud1">
                         <label for="txtlong1">Longitud 1</label>
                     </div>
                     <div class="form-floating mb-3">
                         <input type="number" class="form-control" id="txtlong2"
-                               autocomplete="off" placeholder="Longitud 2">
-                               
+                               autocomplete="off" placeholder="Longitud 2"
+                               [(ngModel)]="triangulo.longitud2">
                         <label for="txtlong2">Longitud 2</label>
                     </div>
                     <div class="form-floating mb-3">
                         <input type="number" class="form-control" id="txtlong3"
-                               autocomplete="off" placeholder="Longitud 3">
+                               autocomplete="off" placeholder="Longitud 3"
+                               [(ngModel)]="triangulo.longitud3">
                         <label for="txtlong3">Longitud 3</label>
                     </div>
                     <br>
                     <div class="text-center">
-                        <button type="button" class="btn btn-success">
-                            Procesar triángulo
+                        <button type="button" class="btn btn-success"
+                        (click)="calcularLongitud()">
+                            Procesar longitudes
                         </button>
                     </div>
-
+                    @if(mostrarResultado) {
+                        <div class="alert alert-success text-center mt-5" role="alert">
+                            Triangulo calculado
+                        </div>
+                    }
                 </div>
             </div>
+            @if(mostrarResultado) {
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Longitud 1</th>
+                            <th scope="col">Longitud 2</th>
+                            <th scope="col">Longitud 3</th>
+                            <th scope="col">Tipo de triángulo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (triangulo of triangulos; track $index) {
+                            <tr>
+                                <td>{{triangulo.longitud1}}</td>
+                                <td>{{triangulo.longitud2}}</td>
+                                <td>{{triangulo.longitud3}}</td>
+                                <td>{{triangulo.tipo}}</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
         </div>
     </div>
 </div>
