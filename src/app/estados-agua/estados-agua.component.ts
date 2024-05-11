@@ -17,8 +17,8 @@ export class EstadosAguaComponent {
   calcularEstado(){
     if(this.estadoAgua.temperatura < 0)
       this.estadoAgua.resultado = "Sólido";
-    else if(this.estadoAgua.temperatura < 100)
-      this.estadoAgua.resultado = "Liquido";
+    else if(this.estadoAgua.temperatura < 101)
+      this.estadoAgua.resultado = "Líquido";
     else
     this.estadoAgua.resultado = "Gaseoso";
   
