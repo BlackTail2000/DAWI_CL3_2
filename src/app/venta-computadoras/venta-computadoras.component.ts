@@ -26,6 +26,15 @@ export class VentaComputadorasComponent {
   mostrarResultado: boolean = false;
 
   calcularVenta(): void {
+    if(this.venta.cliente.trim() ==  "" || this.venta.cliente == null) {
+      alert("Ingresar nombre del cliente");
+      return;
+    }
+    if(this.venta.nrocompus < 1) {
+      alert("Ingresar una cantidad válida de computadoras");
+      return;
+    }
+
     this.venta.neto = Number(this.venta.nrocompus) * 4000;
     this.venta.porcentajedesc = this.calcularDescuento(Number(this.venta.nrocompus));
     this.venta.total = Number(this.venta.neto) - Number(this.venta.neto * this.venta.porcentajedesc / 100);
