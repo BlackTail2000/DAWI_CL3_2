@@ -26,14 +26,17 @@ export class TiposTriangulosComponent {
 mostrarResultado: boolean = false;
 
 calcularLongitud(): void {
-
+  if (this.triangulo.longitud1 < 0 || this.triangulo.longitud2 < 0 || this.triangulo.longitud3 < 0) {
+    alert("No se pueden ingresar longitudes negativas."); // Mensaje para el usuario
+        return; 
+} else {
   if (this.triangulo.longitud1 == this.triangulo.longitud2 && this.triangulo.longitud2 == this.triangulo.longitud3) {
     this.triangulo.tipo = "Equilátero";
 } else if (this.triangulo.longitud1 === this.triangulo.longitud2 || this.triangulo.longitud1 === this.triangulo.longitud3 || this.triangulo.longitud2 === this.triangulo.longitud3) {
     this.triangulo.tipo = "Isósceles";
 } else {
     this.triangulo.tipo = "Escaleno";
-}
+}}
   this.triangulos.push({
 
     longitud1: this.triangulo.longitud1,
