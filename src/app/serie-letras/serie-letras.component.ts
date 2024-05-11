@@ -1,9 +1,15 @@
+import { CurrencyPipe, DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-serie-letras',
   standalone: true,
-  imports: [],
+  imports: [
+    FormsModule,
+    DatePipe,
+    CurrencyPipe
+  ],
   templateUrl: './serie-letras.component.html',
   styleUrl: './serie-letras.component.scss'
 })
@@ -40,8 +46,7 @@ export class SerieLetrasComponent {
 
   }
     this.mostrarResultado = true;
-    }
-      
+    }  
   }
 
   convertirNumeroALetra(numero: number) : string {
