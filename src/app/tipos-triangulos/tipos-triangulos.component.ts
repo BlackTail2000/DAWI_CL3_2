@@ -15,5 +15,20 @@ import { FormsModule } from '@angular/forms';
 })
 export class TiposTriangulosComponent {
 
-  
+  triangulos: Triangulo[] = []
+
+  triangulo = {
+    longitud1: 0,
+    longitud2: 0,
+    longitud3: 0,
+    tipo: ""
+}
+
+}
+
+type Triangulo = {
+  longitud1: number,
+  longitud2: number,
+  longitud3: number,
+  tipo: string
 }
