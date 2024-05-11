@@ -9,4 +9,10 @@ import { Component } from '@angular/core';
 })
 export class SerieLetrasComponent {
 
+  numeroLetras: NumeroLetras[] = []
+}
+
+type NumeroLetras = {
+  numero: number,
+  letra: string
 }
